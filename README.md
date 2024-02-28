@@ -11,7 +11,7 @@ Add git repo to your `package.json` dependencies
 or use `npm install` and save
 
 ```
-npm install --save-dev cypress-sql-server
+npm install --save-dev cypress-sql-multiple-server
 ```
 
 # Configure
@@ -19,11 +19,16 @@ npm install --save-dev cypress-sql-server
 The plug-in can be initialised in your `cypress/plugins/index.js` file as below.
 
 ```
-const sqlServer = require('cypress-sql-server');
+const sqlServer1= require('cypress-sql-multiple-server');
+const sqlServer2 = require('cypress-sql-multiple-server')
 
 module.exports = (on, config) => {
-  tasks = sqlServer.loadDBPlugin(config.db);
-  on('task', tasks);
+ MSSQLServer1 = sqlServerTransaction.loadDBPlugin(configData.Server1);
+    MSSQLServer2 = sqlServerReport.loadDBPlugin(configData.Server2)
+    on('task', {
+      'MSSQLServer1:execute': transactionDB['MSSQLServer1:execute'],
+      'MSSQLServer2:execute': reportsDB['MSSQLServer2:execute']
+    })
 }
 ```
 
@@ -31,14 +36,14 @@ module.exports = (on, config) => {
 The extension provides multiple sets of commands. You can import the ones you need. Example `support/index.js` file.
 
 ```
-import sqlServer from 'cypress-sql-server';
+import sqlServer from 'cypress-sql-multiple-server';
 sqlServer.loadDBCommands();
 ```
 
 ## cypress.json
 Your cypress.json (or environment specific files in the config directory) should specify the DB redentials in the following format
 
-    "db": {
+    "server1": {
         "userName": "",
         "password": "",
         "server": "",
@@ -53,7 +58,8 @@ Your cypress.json (or environment specific files in the config directory) should
 ## cy.sqlServer(query)
 
 ```
-cy.sqlServer(`SELECT 'test').should('eq', 'test');
+cy.sqlServer1(`SELECT 'test').should('eq', 'test');
+cy.sqlServer2(`SELECT 'test').should('eq', 'test');
 ```
 
 # Testing
