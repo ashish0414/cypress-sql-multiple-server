@@ -5,7 +5,7 @@ Allows interaction with a SQL Server database from Cypress commands
 Add git repo to your `package.json` dependencies
 
 ```
-"cypress-sql-server": "*"
+"cypress-sql-multiple-server": "*"
 ```
 
 or use `npm install` and save
@@ -26,8 +26,8 @@ module.exports = (on, config) => {
  MSSQLServer1 = sqlServerTransaction.loadDBPlugin(configData.Server1);
     MSSQLServer2 = sqlServerReport.loadDBPlugin(configData.Server2)
     on('task', {
-      'MSSQLServer1:execute': transactionDB['MSSQLServer1:execute'],
-      'MSSQLServer2:execute': reportsDB['MSSQLServer2:execute']
+      'sqlServer1:execute': MSSQLServer1['sqlServer1:execute'],
+      'sqlServer2:execute': MSSQLServer2['sqlServer2:execute']
     })
 }
 ```
