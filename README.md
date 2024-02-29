@@ -23,8 +23,8 @@ const sqlServer1= require('cypress-sql-multiple-server');
 const sqlServer2 = require('cypress-sql-multiple-server')
 
 module.exports = (on, config) => {
- MSSQLServer1 = sqlServerTransaction.loadDBPlugin(configData.Server1);
-    MSSQLServer2 = sqlServerReport.loadDBPlugin(configData.Server2)
+ MSSQLServer1 = sqlServer1.loadDBPlugin(configData.Server1);
+    MSSQLServer2 = sqlServer2.loadDBPlugin(configData.Server2)
     on('task', {
       'sqlServer1:execute': MSSQLServer1['sqlServer1:execute'],
       'sqlServer2:execute': MSSQLServer2['sqlServer2:execute']
