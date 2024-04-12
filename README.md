@@ -43,7 +43,7 @@ sqlServer.loadDBCommands();
 ## cypress.json
 Your cypress.json (or environment specific files in the config directory) should specify the DB redentials in the following format
 
-    "server1": {
+    "Server1": {
         "userName": "",
         "password": "",
         "server": "",
