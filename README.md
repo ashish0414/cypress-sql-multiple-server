@@ -1,5 +1,5 @@
 # Introduction
-Allows interaction with a SQL Server database from Cypress commands
+Allows interaction with a SQL Server database from Cypress commands with response in JSON Object format with metadata
 
 # Install
 Add git repo to your `package.json` dependencies
